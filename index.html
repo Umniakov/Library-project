@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo-container">
+          <a class="logo" href="/">
+            <div class="logo-img">
+              <img src="./images/book-multiple.svg" alt="logo" />
+            </div>
+            <div class="project-name">Library</div>
+          </a>
+        </div>
+        <div class="log-container">
+          <h3>Statistics:</h3>
+          <div class="log">
+            <div class="total">Total: 3</div>
+            <div class="to-read">To read: 2</div>
+            <div class="read">Already read: 1</div>
+          </div>
+        </div>
+      </div>
+      <div class="settings">
+        <div class="ordering">
+          <label for="order">Order By: </label>
+          <select name="order" id="order">
+            <option value="insertion">Insertion date</option>
+            <option value="publishing">Publishing date</option>
+          </select>
+          <select name="order-dir" id="order-dir">
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+          </select>
+        </div>
+        <div class="search-bar">
+          <label for="search"
+            ><img src="./images/magnify.svg" alt="search"
+          /></label>
+          <input type="search" name="search" id="search" />
+        </div>
+        <div class="legend">
+          <div class="legend-read">Read</div>
+          <div class="legend-unread">Not read</div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="card card-1">
+          <div class="title">A Game Of Thrones</div>
+          <div class="author">By: George R. R. Martin</div>
+          <div class="page-number">Number of pages: 694</div>
+          <div class="language">Language: English</div>
+          <div class="published">Published: July 1 1996</div>
+          <div class="button">
+            Mark as read:
+            <button type="button">slider</button>
+          </div>
+        </div>
+        <div class="card card-2">
+          <div class="title">A Game Of Thrones</div>
+          <div class="author">By: George R. R. Martin</div>
+          <div class="page-number">Number of pages: 694</div>
+          <div class="language">Language: English</div>
+          <div class="published">Published: July 1 1996</div>
+          <div class="button">
+            Mark as read:
+            <button type="button">slider</button>
+          </div>
+        </div>
+        <div class="card card-3">
+          <div class="title">A Game Of Thrones</div>
+          <div class="author">By: George R. R. Martin</div>
+          <div class="page-number">Number of pages: 694</div>
+          <div class="language">Language: English</div>
+          <div class="published">Published: July 1 1996</div>
+          <div class="button">
+            Mark as read:
+            <button type="button">slider</button>
+          </div>
+        </div>
+        <div class="add-item card"></div>
+      </div>
+    </div>
+    <div class="pop-up"></div>
+  </body>
+</html>
+<!-- icons, font, layout -->

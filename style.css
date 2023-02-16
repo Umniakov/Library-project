@@ -1,0 +1,266 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* outline: 1px solid royalblue; */
+}
+
+:root {
+  --clr-50: #eff6ff;
+  --clr-100: #dbeafe;
+  --clr-200: #bfdbfe;
+  --bcg-clr-300: #93c5fd;
+  --clr-400: #60a5fa;
+  --clr-500: #3b82f6;
+  --clr-700: #0369a1;
+  --clr-sky-100: #e0f2fe;
+  --font-one: 'Amatic SC', cursive;
+  --font-two: 'Pacifico', sans-serif;
+  }
+
+
+.container {
+  margin: 0 auto;
+  border-radius: 10px;
+  font-family:'Times New Roman', Times, serif;
+}
+
+/* header */
+
+.header {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.logo-img > img {
+  display: block;
+}
+
+.logo {
+  font-family: var(--font-two);
+  font-size: 3rem;
+  display: flex;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.log-container {
+  margin: 15px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+  padding: 5px;
+  border: 1px solid var(--clr-100);
+  border-radius: 5px;
+  background-color: var(--clr-200);
+}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 3px;
+}
+
+.container h3 {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-two);
+}
+
+/* settings */
+
+.settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  row-gap: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.legend {
+  display: flex;
+  column-gap: 10px;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+
+.legend-read::before,
+.legend-unread::before {
+  display: block;
+  align-items: center;
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-color: red;
+}
+
+.legend-unread::before {
+  background-color: green;
+}
+
+.legend-read,
+.legend-unread {
+  padding: 0 3px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.search-bar img {
+  display: block;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.settings :is(select, input) {
+  font-family: inherit;
+  appearance: none;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1px 5px;
+  margin-left: 3px;
+}
+
+.ordering {
+  display: flex;
+}
+
+/* content */
+
+.content {
+  padding: 20px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgb(191,219,254);
+  background: linear-gradient(312deg, rgba(191,219,254,1) 0%, rgba(59,130,246,1) 100%);
+  padding: 20px 50px;
+  border-radius: 5px;
+  min-height: 150px;
+}
+
+.card-2 {
+  background-color: var(--clr-700);
+}
+
+.button > button {
+  appearance: none;
+  outline: none;
+  background-color: var(--clr-500);
+  border: none;
+}
+
+.add-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-item::before,
+.add-item::after {
+  position: absolute;
+  content: '';
+  height: 100px;
+  width: 15px;
+  background-color: var(--clr-400);
+  border-radius: 5px;
+}
+
+.add-item:hover::before,
+.add-item:hover::after {
+  background-color: var(--clr-700);
+}
+
+.add-item::before {
+  transform: rotate(90deg);
+}
+
+.pop-up {
+  width: 50px;
+  height: 50px;
+  background-color: var(--clr-700);
+  position: fixed;
+  display: flex;
+  right: 2rem;
+  bottom: 2rem;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  transition: transform .2s;
+
+}
+
+.pop-up::after,
+.pop-up::before {
+  position: absolute;
+  content: '';
+  width: 3px;
+  height: 30px;
+  background-color: var(--clr-100);
+}
+
+.pop-up::after {
+  transform: rotate(90deg);
+}
+
+.pop-up:hover {
+  transform: rotate(90deg) scale(1.1);
+  background-color: var(--clr-sky-100);
+}
+
+.pop-up:hover.pop-up::before,
+.pop-up:hover.pop-up::after {
+  background-color: #60a5fa;
+}
+
+
+
+
+
+@media screen and (min-width: 850px) {
+  .legend {
+    margin-left: auto;
+  }
+  .settings {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .container {
+    max-width: 80%;
+  }
+
+  .header {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .log-container {
+    margin: 0;
+    margin-left: auto;
+  }
+  .logo-container {
+    display: flex;
+  }
+}
