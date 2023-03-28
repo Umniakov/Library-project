@@ -14,15 +14,16 @@
   --clr-500: #3b82f6;
   --clr-700: #0369a1;
   --clr-sky-100: #e0f2fe;
-  --font-one: 'Amatic SC', cursive;
-  --font-two: 'Pacifico', sans-serif;
-  }
-
+  --clr-card-read: #afdbf54d;
+  --clr-card-unread: #6cb4ee5d;
+  --font-one: "Amatic SC", cursive;
+  --font-two: "Pacifico", sans-serif;
+}
 
 .container {
   margin: 0 auto;
   border-radius: 10px;
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
 /* header */
@@ -99,14 +100,14 @@
 .legend-unread::before {
   display: block;
   align-items: center;
-  content: '';
+  content: "";
   width: 15px;
   height: 15px;
-  background-color: red;
+  background-color: #6cb4ee5d;
 }
 
 .legend-unread::before {
-  background-color: green;
+  background-color: #afdbf54d;
 }
 
 .legend-read,
@@ -150,15 +151,45 @@
 }
 
 .card {
-  background: rgb(191,219,254);
-  background: linear-gradient(312deg, rgba(191,219,254,1) 0%, rgba(59,130,246,1) 100%);
-  padding: 20px 50px;
+  position: relative;
+  background: var(--clr-card-read);
+  padding: 20px 30px;
   border-radius: 5px;
   min-height: 150px;
+  transition: transform 0.2s;
 }
 
-.card-2 {
-  background-color: var(--clr-700);
+.card.checkedAsRead {
+  background-color: #6cb4ee5d;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card > .btnRemove {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: url(./images/window-close.svg) no-repeat center;
+  width: 10px;
+  height: 15px;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.btnRemove:hover {
+  transform: scale(1.2);
+}
+
+.button {
+  padding-top: 5px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .button > button {
@@ -174,14 +205,15 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .add-item::before,
 .add-item::after {
   position: absolute;
-  content: '';
-  height: 100px;
-  width: 15px;
+  content: "";
+  height: 80px;
+  width: 6px;
   background-color: var(--clr-400);
   border-radius: 5px;
 }
@@ -191,10 +223,19 @@
   background-color: var(--clr-700);
 }
 
+.add-item:hover {
+  transform: scale(1.05);
+  background-color: var(--clr-sky-100);
+}
+
 .add-item::before {
   transform: rotate(90deg);
 }
 
+.cardTitle {
+  font-weight: 700;
+  text-align: right;
+}
 .pop-up {
   width: 50px;
   height: 50px;
@@ -206,15 +247,15 @@
   border-radius: 50%;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-  transition: transform .2s;
-
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s;
 }
 
 .pop-up::after,
 .pop-up::before {
   position: absolute;
-  content: '';
+  content: "";
   width: 3px;
   height: 30px;
   background-color: var(--clr-100);
@@ -234,9 +275,160 @@
   background-color: #60a5fa;
 }
 
+.card .status {
+  position: relative;
+  background-color: var(--bcg-clr-300);
+  width: 35px;
+  height: 17px;
+  border-radius: 15px;
+  appearance: none;
+  outline: 1px solid var(--clr-400);
+}
 
+.status::before {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 15px;
+  top: 1px;
+  left: 1px;
+  border-radius: 50px;
+  background-color: var(--clr-700);
+  transition: transform 0.2s;
+}
 
+.status:checked::before {
+  transform: translateX(18px);
+}
 
+/* prompt */
+
+.book-input-form {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+.show-form {
+  display: flex;
+}
+
+.book-input-form-container {
+  background-color: var(--clr-100);
+  padding: 20px;
+  border: 1px solid var(--clr-200);
+  border-radius: 5px;
+  position: relative;
+}
+
+.exit-button {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  right: 10px;
+  top: 10px;
+  padding: 0;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  transform: scale(1.5);
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.book-input-form h2 {
+  margin: 0 0 10px;
+  padding: 0;
+  text-align: center;
+  font-family: var(--font-two);
+}
+
+.form-div input {
+  font-family: inherit;
+  appearance: none;
+  outline: none;
+  border: none;
+  width: 200px;
+  border: 1px solid var(--clr-200);
+  border-radius: 3px;
+}
+
+.read-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.form-div label {
+  margin: 3px 0;
+}
+
+.read-div input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid var(--clr-200);
+}
+
+.read-div input:checked {
+  background-color: var(--clr-500);
+}
+
+.read-div input:checked::before {
+  position: absolute;
+  content: url(./images/check.svg);
+  top: -1px;
+}
+
+.submit-book-button {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  border: none;
+  background-color: var(--clr-400);
+  color: white;
+  border-radius: 3px;
+  padding: 3px 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.submit-book-button:hover {
+  transform: scale(1.03);
+}
+
+.submit-book-button:disabled {
+  background-color: gray;
+}
+
+/* prompt validation */
+
+.pages-div .hint::before {
+  display: block;
+  content: "should be a number";
+  font-size: 0.9rem;
+  color: rgba(241, 61, 61, 0.9);
+}
 
 @media screen and (min-width: 850px) {
   .legend {
@@ -262,5 +454,20 @@
   }
   .logo-container {
     display: flex;
+  }
+  .form-item label {
+    display: inline-block;
+    width: 80px;
+    margin-right: 0.5rem;
+    text-align: right;
+  }
+  .form-item {
+    width: 350px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+  }
+  .pages-div .hint::before {
+    margin: 3px 0 -8px 130px;
   }
 }
