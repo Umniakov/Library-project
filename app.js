@@ -184,3 +184,4 @@ function stats() {
   }, 0);
 }
 stats();
+console.log("hehehe");
