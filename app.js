@@ -184,4 +184,5 @@ function stats() {
   }, 0);
 }
 stats();
+console.log("hehehe");
 console.log("bebebe");
